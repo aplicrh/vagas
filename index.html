@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="yQigN6Y2hMkyqXraxrlb9k2KJJs6It0Sq0oZQw8xQrM"/>
+                                                  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vagas Click</title>
+
+    <link rel="preconnect" href="https://script.google.com" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin="anonymous"/>
+
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: #f0f2f5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+      }
+
+      #loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        user-select: none;
+      }
+
+      /* Círculo que gira + pontos dentro */
+      .spinner {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+      }
+
+      /* Anel girando (desenhado via ::before para não girar os pontos junto) */
+      .spinner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 3px solid #dde3ea;
+        border-top-color: #2563eb;
+        animation: spin 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        box-shadow: 0 4px 16px rgba(37, 99, 235, 0.12);
+      }
+
+      /* Três pontos pulsando no centro */
+      .spinner span {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #2563eb;
+        animation: dots 1.2s ease-in-out infinite;
+      }
+
+      .spinner span:nth-child(1) { animation-delay: 0s; }
+      .spinner span:nth-child(2) { animation-delay: 0.15s; }
+      .spinner span:nth-child(3) { animation-delay: 0.3s; }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes dots {
+        0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); }
+        40%           { opacity: 1;    transform: scale(1.15); }
+      }
+
+#custom-iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+  background: transparent;
+}
+        
+    </style>
+</head>
+<body>
+
+  <div id="loader">
+    <div class="spinner" aria-label="Carregando">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <iframe 
+    id="custom-iframe" 
+    src="https://script.google.com/macros/s/AKfycbwCSwl6Rp0hAKrXJnsSnOT2Z9l486kpnJ9eadLPCoiGetZguoeIX4ZebJQWUOcHPZNzOw/exec?page=painel" 
+    title="Painel Vagas Click"
+    onload="document.getElementById('loader').style.display='none'; this.style.opacity='1';">
+  </iframe>
+
+</body>
+</html>
